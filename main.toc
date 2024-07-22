@@ -1,0 +1,5 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {2}Chapter 1: Varieties}{1}{section.2}%
+\contentsline {section}{\numberline {3}Chapter 2: Schemes}{1}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Sheaves}{1}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Schemes}{1}{subsection.3.2}%

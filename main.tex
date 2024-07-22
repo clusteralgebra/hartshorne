@@ -1,0 +1,504 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% AMS uses the snapshot package to track which versions of other 
+%     packages are being loaded to ensure consistent compiles. 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{snapshot}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% We expect most lecture notes will use sections and subsections (and 
+%     possibly subsubsections). For those that do all numbering will
+%     be of the form section.subsection.counter use the equation
+%     as the counter and resetting it with each subsection. If so,
+%     please leave the lines below as is.
+%
+% To support any authors who wish to divide their notes only into  
+%     sections, or who prefer to use only unnumbered subsections via
+%     \subsection*, the following lines offer the option to do all 
+%     numbering in the form section.counter (again using the 
+%     equation counter) resetting with each section. 
+%     option which avoids having a subsection number of 0 everywhere
+%     please comment out the line \subsectionsfalse below and then
+%     comment out the line \subsectionstrue.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\ifsubsections
+% Uncomment this line and comment out the line below it if you use 
+%     numbered subsections in your notes. 
+%\subsectionstrue 
+% Uncomment this line and comment out the line above if you do not use 
+%     numbered subsections in your notes. 
+%\subsectionsfalse
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Load the standard PCMI lecture notes class file. 
+%     Please do not insert options to the class file to maintain
+%     consistency between the files of all authors.
+%
+% Note that the class file requires (and so loads) the following 
+%     packages in setting up the design of the PCMI lecture pages:
+%         float (provides support for better positioning of floats)
+%         setspace (provides support for adjustment of leading [spacing] of text)
+%         titlesec (provides support for sectioning commands and appearnace of toc)
+%     No need to load these packages if you wish to use them.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[]{pcmi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Load standard packages to set up the fonts used in the PCMI lectures
+%     and provide standard support for color and graphics files.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Fonts: the PCMI volumes will use 
+%      Palladino as the text family, a smaller Bera for sans
+%      Euler for math characters and Incolsolata for tt
+%      Incolsolata for for a fixed width "typewriter" font
+%      Bera if a sans serif family is required
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[sc]{mathpazo}          % Palatino with smallcaps as text font
+\usepackage{eulervm}               % Euler math
+\usepackage[scaled=0.86]{berasans} % Bera for san serif family
+\usepackage[scaled=1]{inconsolata} % Inconsolata for fixed width
+\usepackage[T1]{fontenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% We use only those microtype features supported by both pdftex and dvips
+%     (cf. Table 1 on p.7 of the microtype documentation). 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[%
+	protrusion=true,
+	expansion=false,
+	auto=false
+	]{microtype}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Support for color and inclusion of graphics through xcolor and graphicx
+%
+%     Please place any included graphics in a directory named "figures" 
+%     in the same directory as your LaTeX source file. You can then include 
+%     the file "circle.eps" from this folder by issuing the command
+%
+%         \includegraphics[]{circle.eps}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Define colors for internal and external links for use by authors
+%     if in draft mode (\drafttrue) and as black for final printing
+%     (draftfalse).
+%
+% Authors please imitate this model. If you want to use any colored text
+%     give your color a name and then use the ifdraft switch to set this
+%     name to your color for \drafttrue and also to black for \draftfalse.
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifdraft
+	\definecolor{linkred}{rgb}{0.7,0.2,0.2}
+	\definecolor{linkblue}{rgb}{0,0.2,0.6}
+\else
+	\definecolor{linkred}{rgb}{0.0,0.0,0.0}
+	\definecolor{linkblue}{rgb}{0,0.0,0.0}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Authors: please load ALL packages you use that are not in the lists 
+%      above or below (where we have packages that need to be loaded 
+%      "late") at this point.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Authors: load additional packages here
+
+%\usepackage{pstricks,pst-plot,pst-node}
+
+
+\usepackage{amssymb,amsfonts,amsthm}
+%\usepackage{amsmath}
+\usepackage[makeroom]{cancel}
+\usepackage{mathtools}
+%\usepackage{yfonts}
+%\usepackage{mathrsfs,pifont}
+\usepackage{pifont}% AO: removed mathrsfs as the script it uses clashes with the Euler math used here and replaced it with eucal
+\usepackage[mathscr]{eucal}
+\usepackage{slashed,mathabx} 
+\usepackage[bbgreekl]{mathbbol}
+\usepackage{tikz-cd}
+\usepackage{enumitem}
+\usepackage{quiver}
+\usepackage[all]{xy}
+\usepackage{mathrsfs}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Load hyperref and amsrefs packages: these MUST be the last packages 
+%     loaded or problems are very likely to result so please keep
+%     them in this position.
+%
+% Please do not alter any of the options given here to maintain
+%     consistency between authors and with the AMS production
+%     requirements. 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PassOptionsToPackage{hyphens}{url} 
+\usepackage[
+    setpagesize=false,
+    pagebackref,
+	pdfpagelabels=false,
+    pdfstartview={FitH 1000},
+    bookmarksnumbered=false,
+    linktoc=all,
+    colorlinks=true,
+    anchorcolor=black,
+    menucolor=black,
+    runcolor=black,
+    filecolor=black,
+    linkcolor=linkblue,%IM black if not in draft mode
+	citecolor=linkblue,%IM black if not in draft mode
+	urlcolor=linkred,%IM black if not in draft mode
+]{hyperref}%IM
+\usepackage[backrefs,msc-links,nobysame]{amsrefs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Adjust aspects of formatting of references by amsrefs to match our style
+%         
+%     In particular this provides two macros for use in the eprints
+%         field of a bib entry
+%
+%     For pointers to arXiv preprints, simply use the arXiv citation key
+%         which is the numerical filename of the article abstract (found
+%         at the end of the URL for the abstract). Thus to reference
+%         http://arxiv.org/abs/1503.05174 simply insert \bibarxiv{1503.05174}.
+%         in the eprint field which would thus read
+%             \eprint={\bibarxiv{1503.05174}},
+%
+%     For pointers to preprints at other URLs, give the the full URL.
+%         as an argument to the macro \biburl. Thus to point to
+%             http://www.ugr.es/~jperez/papers/finite-top-sept29.pdf
+%         insert \biburl{http://www.ugr.es/~jperez/papers/finite-top-sept29.pdf}
+%         in the eprint field which would thus read
+%             \eprint={\biburl{http://www.ugr.es/~jperez/papers/finite-top-sept29.pdf}.},
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\customizeamsrefs 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Please load NO packages after  this point. Problems with hyperref or 
+%         amsrefs are likely to result if you do. 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \newtheorems and other numbered elements
+%
+%     Use the area below to define your own \newtheorems using your preferred 
+%         aliases.
+%
+%     To ensure that your environments share the PCMI standard system for autonumbering:
+%         Use only the standard \theoremstyles plain, definition and remark and 
+%             avoid altering the formatting of these styles to ensure uniformity.
+%   
+%         Please tie all your \newtheorems to the equation counter by inserting 
+%             "[equation]" between the alias and the printed name of the 
+%             environement as in the examples below.
+%
+%         Please do NOT change the formatting of the equation counter. 
+%
+%     In order for floats such as Tables and Figures to number and 
+%         reference correctly, please make sure that your \label
+%         command is placed with AFTER or INSIDE the float caption.
+%
+%     This ensures that the label uses the counter value
+%          at the time the float is placed on a page which may be 
+%          different from the counter's value when the float was read 
+%          becuase the float has been moved forward or back.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Authors: define your theoremlike environments here
+
+\theoremstyle{plain}
+\newtheorem{Proposition}[equation]{Proposition}
+\newtheorem{Lemma}[equation]{Lemma}
+\newtheorem{Corollary}[equation]{Corollary}
+\newtheorem{Theorem}[equation]{Theorem}
+\newtheorem{Fact}[equation]{Fact}
+
+
+\theoremstyle{definition}
+\newtheorem{Definition}[equation]{Definition}
+\newtheorem{Exercise}[equation]{Exercise}
+\newtheorem{Example}[equation]{Example}
+
+\theoremstyle{remark}
+\newtheorem{Remark}[equation]{Remark}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Macros
+%     At this point, place the roster of 'personal' macros you use 
+%         in writing up your lectures and other LaTeX files.
+%
+%     The two macros below are provided as examples. In this file
+%         the macro \replace indicates a field (like a name or 
+%         address) in which you need to replace a placeholder value  
+%         provided here with the corresponding value for you or your lectures.
+%
+%     You can verify that you have made all the intended replacements
+%         by simply deleting this macro and checking that no errors result. 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Authors: insert your personal TeX macros here
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Override numbering in the class file to allow use of numbered 
+%     subsubsections (which are often \ref'd here)
+% Redefine the \subsubsection command to force the associated    
+%     counter to synch with the equation counter before the
+%     subsubsection is declared and then afterwards
+%     increment the equation counter thus forcing the use of
+%     successive values for all numbered elements
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{macros}
+\setcounter{tocdepth}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Start of document body
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Filling in title page, running head and author fields.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[Algebraic Geometry]{[Hartshorne] Algebraic Geometry exercise solutions} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    
+%    Author information--add further authors as needed
+%    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{Alan Yan}
+\date{} 
+\address{
+\newline Department of Mathematics,
+Harvard University,
+Cambridge, MA 02138 
+}
+\email{	alanyan@math.harvard.edu}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    
+%    Classification and abstract
+%    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\keywords{}
+\begin{abstract}
+    \textcolor{red}{To be added.}
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    
+%    Make the title page
+%    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    
+%    Your lecture notes replace the remainder of this document.
+%    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Authors: insert the body of your lectures here
+
+
+\section{Introduction} 
+
+\section{Chapter 1: Varieties}
+
+\section{Chapter 2: Schemes}
+
+\subsection{Sheaves}
+
+\subsection{Schemes}
+
+
+\begin{Exercise}
+    Let $A$ be a ring, let $X = \Spec A$, let $f \in A$ and let $D(f) \subseteq X$ be the open complement of $V((f))$. Show that the locally ringed space $(D(f), \cO_X|_{D(f)})$ is isomorphic to $\Spec A_f$. 
+\end{Exercise}
+
+\begin{proof}
+    The localization map $\ell : A \to A_f$ induces a bijection between ideals of $A$ not containing $f$ and the ideals of $A_f$. This bijection gives a one-to-one correspondence between the prime ideals of $A$ not containing $f$ and the prime ideals of $A_f$. In other words, we have a bijection $\varphi : D(f) \to \Spec A_f$. For any ideal $\fa$ of $A$ not containing $f$, we have $\fp \supseteq \fa$ if and only if $\varphi(\fp) \supseteq \varphi(\fa)$. This proves that $\varphi$ is a homeomorphism. An isomorphism on the sheaf structure is induced by the natural isomorphism 
+    \[
+        \left( A_f \right)_{\varphi(\fp)} \to A_\fp. 
+    \]
+\end{proof}
+
+\begin{Exercise}
+    Let $(X, \cO_X)$ be a scheme, and let $U \subseteq X$ be any open subset. Show that $\left (U, \cO_X|_U \right )$ is a scheme. We call this the \textbf{induced scheme structure} on the open set $U$, and we refer to $\left( U, \cO_X|_U \right)$ as an open subscheme of $X$. 
+\end{Exercise}
+
+\begin{proof}
+    It suffices to assume $X$ is affine. In this case, the distinguished open sets are affine schemes. Since this forms a basis of the topology, this implies that an open set inherits a scheme structure. 
+\end{proof}
+
+\begin{Exercise}[Reduced schemes]
+    A scheme $(X, \cO_X)$ is \textbf{reduced} if for every open set $U \subseteq X$, the ring $\cO_X(U)$ has no nilpotent elements. 
+    \begin{enumerate}[label = (\alph*)]
+        \item Show that $(X, \cO_X)$ is reduced if and only if for every $p \in X$, the local ring $\cO_{X, p}$ has no nilpotent elements. 
+        \item Let $(X, \cO_X)$ be a scheme. Let $\left (\cO_X \right )_{\red}$ be the sheaf associated to the presheaf $U \mapsto \cO_X(U)_{\red}$, where for any ring $A$, we denote by $A_{\red}$ the quotient of $A$ by its ideal of nilpotent elements. Show that $ \left (X, \left ( \cO_X \right )_{\red} \right )$ is a scheme. We call it the \textbf{reduced scheme} of $X$ and denote it $X_{\red}$. Show that there is a morphism of schemes $X_{\red} \to X$ which is a homeomorphism on the underlying topological spaces. 
+        \item Let $f : X \to Y$ be a morphism of schemes, and assume that $X$ is reduced. Show that there is a unique morphism $g : X \to Y_{\red}$ such that $f$ is obtained by composing $g$ with the natural map $Y_{\red} \to Y$. 
+    \end{enumerate}
+\end{Exercise}
+
+\begin{proof}
+    Suppose that $\cO_{X, p}$ has no nilpotent elements for all $p \in U$. Let $s \in \cO_X(U)$ be nilpotent. Then the germ of $s$ at every $p \in U$ must be zero. From the identity axiom, this implies that $s = 0$. Hence $\cO_X(U)$ has no nilpotents. Conversely, suppose that $\cO_X(U)$ has no nilpotents for all open $U \subseteq X$. Let $(U, \cO_X|_U) \simeq \Spec A$ be an affine open containing $p \in X$ and let $p$ corresponding to the prime ideal $\fp$ in $\Spec A$. Then $\cO_{X, p} \simeq A_\fp$. From our hypothesis $A$ is reduced. This implies that $A_\fp$ is reduced which completes the proof to Part (a). 
+
+    
+    To construct a morphism $X_{\red} \to X$, we need a continuous map $\varphi : X \to X$ and a sheaf morphism $\varphi^{\#} : \cO_X \to {\left( \cO_X \right)}_{\red}$. We can pick $\varphi = \id_X$ and $\varphi^{\#}$ to be the composition $\cO_X \to {\left( \cO_X \right)}_{\red}^{\pre} \to {\left( \cO_X \right)}_{\red}$. This completes Part (b). 
+
+    For Part (c), the fact that $\cO_X$ is reduced implies that the morphism $\cO_Y \to \cO_X$ can be factored through ${\left( \cO_Y \right)}_{\red}^{\pre}$. The rest follows from the universal property of the sheafification. 
+\end{proof}
+
+\begin{Exercise}\label{Exercise:2.2.4}
+    Let $A$ be a ring and let $(X, \cO_X)$ be a scheme. Given a morphism $f : X \to \Spec A$, we have an associated map on sheaves $f^\# : \cO_{\Spec A} \to f_* \cO_X$. Taking global sections we obtain a homomorphism $A \to \Gamma(X, \cO_X)$. Thus there is a natural map 
+    \[
+        \alpha : \Hom_{\Sch}(X, \Spec A) \longrightarrow \Hom_{\Rings}(A, \Gamma(X, \cO_X)).
+    \]
+    Show that $\alpha$ is bijective. 
+\end{Exercise}
+
+\begin{proof}
+    We begin with a ring homomorphism $\phi : A \to \Gamma(X, \cO_X)$. For any $p \in X$, we can consider the composition $\phi_p : A \to \Gamma(X, \cO_X) \to \cO_{X, p}$. This defines a set-map $f : X \to \Spec A$ defined by $f(p) \eqdef \phi_p^{-1}(\fm_{X, p})$. This is continuous because locally this is exactly the map when we restrict to affine open subschemes. For example, if we consider instead 
+    \[
+        A \to \Gamma(X, \cO_X) \to \Gamma(\Spec B, \cO_X|_{\Spec B}) \simeq B
+    \]
+    and then composition $A \to B \to B_{\fp}$ for $\fp \in \Spec B$ this is exactly our map $\Spec B \subseteq X \to \Spec A$ and corresponds exactly to the morphism $A \to B$. Since locally it is continuous, it must be continuous on $X \to \Spec A$. From the gluing and identity axiom on affine opens, we see that there exists a unique scheme morphism $X \to \Spec A$ corresponding to the ring morphism $A \to \Gamma(X, \cO_X)$. 
+\end{proof}
+
+\begin{Exercise}
+    Describe $\Spec \ZZ$, and show that it is a final object in the category of schemes. 
+\end{Exercise}
+
+\begin{proof}
+    The points of $\ZZ$ are $(0)$ and $(p)$ for primes $p \in \ZZ$. The zero ideal is the generic point. The ideals $(p)$ are closed points. The closed sets in the Zariski topology are the whole space, the empty set, and finite sets of points not containing $(0)$. The open sets are the whole space, the empty set, and infinite number of points including $(0)$. The sections over the whole space is $\ZZ$, the sections over the empty set is $0$, and the sections over the set ${\{(p_1), \ldots, (p_n)\}}^c$ is 
+    \[
+        \cO_{\Spec \ZZ} \left( \Spec \ZZ \backslash \{(p_1), \ldots, (p_n) \} \right) \simeq \ZZ \left[ \frac{1}{p_1}, \ldots, \frac{1}{p_n} \right]
+    \]
+    The fact that $\Spec \ZZ$ is a final object follows from Exercise~\ref{Exercise:2.2.4}. 
+\end{proof}
+
+\begin{Exercise}
+    Describe the spectrum of the zero ring, and show that it is an initial object for the category of schemes. (According to our conventions, all ring homomorphisms must take 1 to 1. Since $0 = 1$ in the zero ring, we see that each ring $R$ admits a unique homomorphism to the zero ring, but that there is no homomorphism from the zero ring to $R$ unless $0 = 1$ in $R$.)
+\end{Exercise}
+
+\begin{proof}
+    The spectrum of the zero ring is empty with sections $\cO(\emptyset) = 0$. Since any ring has a unique morphism to the $0$ ring, the spectrum of the zero ring is the initial object in the category of schemes. 
+\end{proof}
+
+\begin{Exercise}
+    Let $X$ be a scheme. For any $x \in X$, let $\cO_x$ be the local ring at $x$, and $\fm_x$ its maximal ideal. We define the \textbf{residue field} of $x$ on $X$ to be the field $k(x) = \cO_x / \fm_x$. Now let $K$ be any field. Show that to give a morphism of $\Spec K$ to $X$ it is equivalent to give a point $x \in X$ and an inclusion map $k(x) \to K$. 
+\end{Exercise}
+
+\begin{proof}
+    Let $(\phi, \phi^{\#}): \Spec K \to X$ be a morphism of schemes. Since $\Spec K$ consists of a single point, there is some $p \in X$ such that $\phi(\bullet) = p$. We then have a sheaf morphism 
+    \[
+        \phi^{\#} : \cO_X \to \phi_* \cO_{\Spec K}. 
+    \]
+    For $U \subseteq X$ not containing $p$, we have $\phi_* \cO_{\Spec K}(U) = 0$ so the map is uniquely determined. When $p \in U$, then we have $\phi^{\#} : \cO_X(U) \to K$. For all such $U$, it factors through $\cO_{X, p}$ by taking the induced map on stalks:
+    \[
+        \begin{tikzcd}
+            {\mathscr{O}_X(U)} & K \\
+            {\mathscr{O}_{X, p}} & K
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=1-1, to=2-1]
+            \arrow[Rightarrow, no head, from=1-2, to=2-2]
+            \arrow[from=2-1, to=2-2]
+        \end{tikzcd}
+    \]
+    Since the morphism is a morphism of local rings, it must be the case that the pre-image of the zero ideal in $K$ is $\fm_{X, x}$. Thus, this induces a map $k(x) \to k$ which must be an injection since homomorphisms between fields are always injections.
+\end{proof}
+
+\begin{Exercise}
+    Let $X$ be a scheme. For any point $x \in X$, we define the \textbf{Zariski tangent space} $T_x$ to $X$ at $x$ to be the dual of the $k(x)$-vector space $\mathfrak{m}_x/\mathfrak{m}_x^2$. Now assume that $X$ is a scheme over a field $k$, and let $k[\varepsilon]/\varepsilon^2$ be the \textbf{ring of dual numbers} over $k$. Show that to give a $k$-morphism of $\operatorname{Spec} k[\varepsilon]/\varepsilon^2$ to $X$ is equivalent to giving a point $x \in X$, \textbf{rational over} $k$ (i.e., such that $k(x) = k$), and an element of $T_x$.
+\end{Exercise}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    
+% To add references to your document, replace the two \bib commands below. 
+%
+%         1. You can use a list of \bib commands for the items you reference as is
+%         done in our toy example here.
+%
+%         2. A second option is to use the command 
+%             \bibselect{yourltbfile}
+%         to point to a file of \bib commands that should be named 
+%         yourltbfile.ltb and be placed in the same folder as your LaTeX
+%         source files. 
+%
+%         3. A third option is to use the command 
+%             \bibliography{yourbibfile}
+%         to point to a file of BibTeX \bib commands that should be named 
+%         yourltbfile.bbl and be placed in the same folder as your LaTeX
+%         source files. 
+%   
+% If you use option 3. above, you should comment out or delete the lines
+%            \begin{bibdiv}
+%                \begin{biblist}
+%        before the \bib command below as well as the line
+%                  \end{biblist}
+%              \end{bibdiv}
+%        after it. 
+%
+% If you use options 2. or 3. and wish to make your source file self-contained you may
+%         for final submission, simply copy the \bib entries to your \LaTeX\ file and
+%         wrap them, if necessary, as indicated above.
+%  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibspread
+\bibliographystyle{plain}
+\bibliography{ref}
+
+\vfill\eject
+\end{document}
