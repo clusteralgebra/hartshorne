@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1721682239 "main.aux" "main.bbl" "main" 1721682580 0
+["bibtex main"] 1721922145 "main.aux" "main.bbl" "main" 1721923177 0
   "./ref.bib" 1721663750 1085 5e35864f0d0d25482fabb68f8c51bb4a ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/amsrefs/amsrn.bst" 1288397156 15073 94ff0422b36f7eea65c1e1332ae40dfb ""
-  "main.aux" 1721682580 1436 aa7b03bfbaba312f427fa98082069c50 "pdflatex"
+  "main.aux" 1721923176 1535 6bbb58b3d45eb4952757423f033c4443 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1721682579 "/Users/alan/repos/hartshorne/main.tex" "main.pdf" "main" 1721682580 0
-  "/Users/alan/repos/hartshorne/main.tex" 1721682578 23352 55c4ded88621b9b36a72b5de13fc4ad1 ""
+["pdflatex"] 1721923176 "/Users/alan/repos/hartshorne/main.tex" "main.pdf" "main" 1721923177 0
+  "/Users/alan/repos/hartshorne/main.tex" 1721923175 45957 81af2a4b1a21c441bc573fa1d6e99867 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc" 1558214095 7631 5169ff1acd97ff1c4ab83563c99f96f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -22,6 +22,7 @@
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm10.tfm" 1246382020 1040 b84415f97d114011685943ade933dc71 ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm5.tfm" 1246382020 1040 a9d2074f3fa062d4d9046b92e2334d8c ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm7.tfm" 1246382020 1040 82eb6630b094bff824fccca83ff507f9 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/euler/eurm10.tfm" 1246382020 1228 9be37fdf0dc0e1f4df4af3594876d628 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/euler/eurm7.tfm" 1246382020 1228 22a83614922c993c1b2e124955a38ca1 ""
@@ -86,6 +87,7 @@
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1248133631 31764 459c573c03a4949a528c2cc7f557e217 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb" 1558214095 55526 184de5d68af8c544d6d1653244a2b006 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/mathabx-type1/matha10.pfb" 1295482684 90043 a01ee69dbd537ea8a0835a2b4841a64e ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/mathabx-type1/matha6.pfb" 1295482684 93176 0e192b93dceeff9d5c17507fff8379cc ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/mathabx-type1/matha8.pfb" 1295482684 92536 122d225cdc6105aa1e30a312e405a45c ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb" 1295482684 70423 0070bb296823c13808887eb0da9c02b4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb" 1136849748 12410 7504dd653d0e7cf266cb973aeafd597c ""
@@ -303,13 +305,13 @@
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "amsrefs.sty" 1721310432 87208 64f3c492070aca63a5b82d8b741e64a3 ""
   "ifoption.sty" 1721310432 1295 703a027847d049c1bb7068f08db66e29 ""
-  "macros.sty" 1721679294 4066 57d68b82bdc6a0254871d1ba90362dfb ""
-  "main.aux" 1721682580 1436 aa7b03bfbaba312f427fa98082069c50 "pdflatex"
-  "main.bbl" 1721682239 119 0cede76c9f7ca526b3e485bc42490027 "bibtex main"
-  "main.brf" 1721682579 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.out" 1721682580 575 e4f02995abdbf7696dba38e16399090e "pdflatex"
-  "main.tex" 1721682578 23352 55c4ded88621b9b36a72b5de13fc4ad1 ""
-  "main.toc" 1721682580 364 792f5edc53ee94c4356c58fb2ccbfe18 "pdflatex"
+  "macros.sty" 1721836690 4094 e04fbcb18647931e54204f1a1ebd8001 ""
+  "main.aux" 1721923176 1535 6bbb58b3d45eb4952757423f033c4443 "pdflatex"
+  "main.bbl" 1721922145 394 72a075dce79c0e0dbd2623d5e31c3b63 "bibtex main"
+  "main.brf" 1721923176 39 f59f93f87a67a7139356a9ea47292014 "pdflatex"
+  "main.out" 1721923176 575 e4f02995abdbf7696dba38e16399090e "pdflatex"
+  "main.tex" 1721923175 45957 81af2a4b1a21c441bc573fa1d6e99867 ""
+  "main.toc" 1721923176 364 792f5edc53ee94c4356c58fb2ccbfe18 "pdflatex"
   "mathscinet.sty" 1721310432 5592 ad3d375ad18e34f9e99b0ae69c737254 ""
   "pcatcode.sty" 1721310432 5386 7c01d262d7f17a4fe6a66ccec8260ca2 ""
   "pcmi.cls" 1721310432 11242 4d782619d9d3a190bd44a3f6a04b4622 ""

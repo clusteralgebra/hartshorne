@@ -245,7 +245,7 @@
 
 \theoremstyle{definition}
 \newtheorem{Definition}[equation]{Definition}
-\newtheorem{Exercise}[equation]{Exercise}
+\newtheorem{Exercise}{Exercise}
 \newtheorem{Example}[equation]{Example}
 
 \theoremstyle{remark}
@@ -295,7 +295,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title[Algebraic Geometry]{[Hartshorne] Algebraic Geometry exercise solutions} 
+\title[Algebraic Geometry]{[Hartshorne] Algebraic Geometry} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    
@@ -341,6 +341,7 @@ Cambridge, MA 02138
 
 \section{Introduction} 
 
+This document contains my solutions to the exercises in~\cite{Harts77}. 
 \section{Chapter 1: Varieties}
 
 \section{Chapter 2: Schemes}
@@ -450,13 +451,256 @@ Cambridge, MA 02138
     Let $X$ be a scheme. For any point $x \in X$, we define the \textbf{Zariski tangent space} $T_x$ to $X$ at $x$ to be the dual of the $k(x)$-vector space $\mathfrak{m}_x/\mathfrak{m}_x^2$. Now assume that $X$ is a scheme over a field $k$, and let $k[\varepsilon]/\varepsilon^2$ be the \textbf{ring of dual numbers} over $k$. Show that to give a $k$-morphism of $\operatorname{Spec} k[\varepsilon]/\varepsilon^2$ to $X$ is equivalent to giving a point $x \in X$, \textbf{rational over} $k$ (i.e., such that $k(x) = k$), and an element of $T_x$.
 \end{Exercise}
 
+\begin{proof}
+    The dual numbers have only one prime ideal $(\varepsilon)$. To get a morphism $\Spec k[\varepsilon] / \varepsilon^2$ to $X$ on the topological level, we need to pick $x \in X$ for the single point to map to. Once we have this point, we need a morphism $\cO_{X, x} \to k[\varepsilon] / (\varepsilon^2)$. The maximal ideal must map into the maximal ideal. Hence, this induces a map $k(x) \to k$. But from the condition of being schemes over $\Spec(k)$, we have a composition $k \to k(x) \to k$ which is the identity. This proves that $x$ is rational over $k$. To pick the morphism $\cO_{X, x} \to k[\varepsilon] / (\varepsilon^2)$, first note that $\fm_x$ must map to $(\varepsilon)$ and since $\varepsilon^2 = 0$, we know that $\fm_x^2$ maps to $0$. Thus the locations of $\fm_x$ are determined by a linear map $\fm_x / \fm_x^2 \to (\varepsilon) \simeq k$. This gives us our element of $T_x$ and also determines the values of $\fm_x$ in the morphism $\cO_{X, x} \to k[\varepsilon] / (\varepsilon^2)$. The rest of the map comes from the $k$-scheme morphism and the fact that $k \to k(x) \to k$ is the identity. 
+\end{proof}
+
+\begin{Exercise}
+    If $X$ is a topological space, and $Z$ can irreducible closed subset of $X$, a generic point for $Z$ is a point $\zeta$ such that $Z = \overline{\{\zeta\}}$. If $X$ is a scheme, show that every irreducible closed subset has a unique generic point. 
+\end{Exercise}
+
+\begin{proof}
+    First suppose that $X$ is affine. Closed subsets are of the form $V(I)$ where $I$ is a radical ideal. I claim that $V(I)$ is irreducible if and only if $I$ is prime. If $I$ is prime, then it is irreducible because it is the closure of a single point. Now suppose $V(I)$ is irreducible. Suppose that $f, g \in A$ satisfy $fg \in I$. Then $V(I) = (V(I) \cap V(f)) \cup (V(I) \cap V(g))$ which implies that $V(f) \supseteq V(I)$ or $V(g) \supseteq V(I)$ which implies that $I$ is prime. This proves that all irreducible closed subsets are of the form $V(\fp)$. Clearly, the unique generic point in this case is $\fp$.
+
+    Now let $X$ be a general scheme. Let $Z$ be an irreducible closed subset of $X$. Let $U$ be an affine open subset of $X$. Then $Z \cap U$ is an irreducible closed subset of $U$. From the previous paragrpah, there is a unique point $z \in Z \cap U$ such that the closure of $z$ in $U$ is $Z \cap U$. But this is an open set of $Z$ which is dense since $Z$ is irreducible. So the closure of $z$ in $X$ is the whole of $Z$. On the other hand, $Z$ has at most $1$ generic point. If it had two, if we intersect with an affine open, the affine open must contain both generic points. But we already proved that in affine open there is at most one generic point. This suffices for the proof. 
+\end{proof}
+
+\begin{Exercise}
+    Describe $\RR[x]$. How does the topological space compare to $\RR$ or $\CC$? 
+\end{Exercise}
+
+\begin{proof}
+    The points are $(0)$, $(x-a)$, and $(x^2 + k)$ for $k > 0$. 
+\end{proof}
+
+\begin{Exercise}
+    Let $k = \FF_p$ be the finite field with $p$ elements. Describe $\Spec k[x]$. What are the residue fields of its points? How many points are there with a given residue field? 
+\end{Exercise}
+
+\begin{proof}
+    The points of $\Spec k[x]$ are the prime ideals $(0)$ and $(f)$ where $f$ is an irreducible polynomial of $k[x]$. The prime ideal $(0)$ is the generic point and $(f)$ are closed points. The residue field at $(0)$ is $\FF_p(x)$ and the residue field at $(f)$ is $\FF_{p^{\deg f}}$. 
+    
+    To figure out the number of points with residue field $\FF_{p^d}$, we only need to count the number of monic irreducible polynoimals of degree $d$ in $\FF_p[x]$. To count this, we prove two facts:
+    \begin{enumerate}
+        \item An irreducible polynomial divides $x^{p^n} - x$ if and only if its degree divides $n$. 
+        \item $x^{p^n} - x$ has distinct irreducible factors.
+    \end{enumerate}
+    Let $f$ be an irreducible polynomial of degree $d$ with $d | n$. Then $\FF_p[x] / (f) \simeq \FF_{p^d}$. Since $d | n$, any element in $\FF_{p^d}$ is a solution to $x^{p^n} - x = 0$. This implies that $x^{p^n} - x \in (f)$ which implies $f | x^{p^n} - x$. Conversely, suppose that $f$ is an irreducible polynomial dividing $x^{p^n} - x$. We already know that $f | x^{p^d} - x | x^{p^n} - x$ which proves (1). For (2), just take a derivative!
+\end{proof}
+
+\begin{Exercise}[Glueing Lemma]
+    Let $\{X_i\}$ be a family of schemes (possibly infinite). For each $i \neq j$, suppose given an open subset $U_{ij} \subseteq X_i$, and let it have the induced scheme structure. Suppose also given for each $i \neq j$ an isomorphism of schemes $\varphi_{ij} : U_{ij} \to U_{ji}$ such that 
+    \begin{enumerate}
+        \item for each $i, j$, $\varphi_{ji} = \varphi_{ij}^{-1}$, and 
+        \item for each $i, j, k$, $\varphi_{ij}(U_{ij} \cap U_{ik}) = U_{ji} \cap U_{jk}$, and $\varphi_{ik} = \varphi_{jk} \circ \varphi_{ij}$ on $U_{ij} \cap U_{ik}$.
+    \end{enumerate}
+    Then show that there is a scheme $X$, together with morphisms $\psi_i : X_i \to X$ for each $i$, such that 
+    \begin{enumerate}
+        \item $\psi_i$ is an isomorphism of $X_i$ onto an open subscheme of $X$, 
+        \item the $\psi_i(X_i)$ cover $X$, 
+        \item $\psi_i(U_{ij}) = \psi_i(X_i) \cap \psi_j(X_j)$, and 
+        \item $\psi_i = \psi_j \circ \varphi_{ij}$ on $U_{ij}$. 
+    \end{enumerate}
+    We say that $X$ is obtained by \textbf{glueing} the schemes $X_i$ along the isomorphisms $\varphi_{ij}$.
+\end{Exercise}
+
+\begin{proof}
+    We first describe the topological space $X$. Let $X = \bigsqcup X_i / \sim$ where $x_i \in X_i$ and $x_j \in X_j$ satisfy $x_i \sim x_j$ if and only if $x_i \in U_{ij}$, $x_j \in U_{ji}$, and $x_j = \varphi_{ij}(x_i)$. It is easy to see that this is an equivalence relation. 
+
+    For every index $i$, we have a map $\ell_i : X_i \to X$ which is the natural inclusion $X_i \to \bigsqcup X_i$ and then projecting to $X$. We equip $X$ with the quotient topology. In this topology, $U \subseteq X$ is open if and only if $\ell_i^{-1}(U) \subseteq X_i$ is open for all $i$. To define the sheaf structure on $X$, we first define the notation of a family of compatible sections over $U \subseteq X$. 
+    \begin{Definition}
+        A \textbf{family of compatible sections} over $U \subseteq X$ is a family of sections $s_i \in \cO_{X_i} \left( \ell_i^{-1}(U) \right)$ such that for every $i \neq j$, we have 
+        \[
+            \varphi_{ij}^{\#} \left( s_j |_{\ell_j^{-1}(U) \cap U_{ji}} \right) = s_i|_{\ell_i^{-1}(U) \cap U_{ij}}
+        \]
+    \end{Definition}
+    Now that we have defined families of compatible sections over open subsets of $X$, we can equip the $X$ with the presheaf of rings defined by
+    \[
+        \cO_X (U) \eqdef \left\{ \left( s_i \in \cO_{X_i}(\ell_i^{-1}(U)) \right) : \text{ family of compatible sections} \right\}.
+    \]
+    The restriction maps are component-wise restriction. The gluing axiom and identity axiom follow from the gluing and identity axiom of each $\cO_{X_i}$. Thus, we have realized $X$ as a ringed space.
+
+    For every $i$, we have a natural morphism $\psi_i : \left( X_i, \cO_{X_i} \right) \to \left( X, \cO_X \right)$ where the continuous map $\psi_i : X_i \to X$ is the continuous map $\ell_i : X_i \to X$ and the morphism of sheaves 
+    \begin{align*}
+        \psi_i^{\#} & : \cO_X \to (\ell_i)_* \cO_{X_i} \\
+        \psi_i^{\#}(U) & : \cO_X(U) \to \cO_{X_i}(\ell_i^{-1}(U))
+    \end{align*}
+    which is given by projection. It is clear that $\ell_i(X_i)$ is an open subset of $X$ and $\psi_i$ induces an isomorphism between $(X_i, \cO_{X_i})$ and $(\psi_i(X_i), \cO_X|_{\psi_i(X_i)})$. This proves that $X$ is a scheme.      
+\end{proof}
+
+\begin{Exercise}
+    A topological space is \textbf{quasi-compact} if every open cover has a finite subcover. 
+    \begin{enumerate}[label = (\alph*)]
+        \item Show that a topological space is noetherian if and only if every open subset is quasi-compact. 
+        \item If $X$ is an affine scheme, show that $\spce (X)$ is quasi-compact, but not in general noetherian. We say that a scheme is \textbf{quasi-compact} if $\spce(X)$ is. 
+        \item If $A$ is a noetherian ring, show that $\spce (\Spec A)$ is a noetherian topological space. 
+        \item Give an example where $\spce (\Spec A)$ can be noetherian even when $A$ is not. 
+    \end{enumerate}
+\end{Exercise}
+
+\begin{proof}
+    Suppose that $X$ is a noetherian topological space. This means that it satisfies the ascending chain condition on open sets. Let $U$ be an open set and consider an open cover $\{U_i\}$. If there is no finite subcover, we can find a strictly increasing sequence of open sets contained in $U$. But this contradicts the ascending chain condition. Conersely, suppose that every open set is quasi-compact. Take an ascending chain of open sets. Their union has a fintie subcover. This proves (a). 
+
+    Let $X = \Spec A$. It suffices to prove that an open cover by distinguished open sets has a finite subcover. Suppose that 
+    \[
+        \Spec A = \bigcup D(f_i). 
+    \]
+    This means that any prime ideal of $A$ does not contain at least one $f_i$. Thus, the ideal $I = (f_i)$ is not contained in any prime ideal, which means $1 \in I$. So $1 = \sum c_i f_i$ for some finitely many $i$. Taking the corresponding $f_i$ we have our finite subcover. Affine schemes are not necessarily noetherian. Consider $A = k[x_1, x_2, \ldots]$ the polynomial ring with infinitely many variables. Then $\bigcup D(x_i)$ is an open set with no finite subcover. 
+
+    Suppose that $A$ is noetherian. Now consider a descending chain of closed sets $Z(I_1) \supset Z(I_2) \supseteq \ldots$ where the $I_k$ are radical ideals. This corresponds to ascending chain of ideals $I_1 \subseteq I_2 \subseteq \ldots$ which is eventually stationary from noetherianness of $A$. This proves that $\spce(\Spec A)$ is noetherian. 
+
+    For (d), consider $A = k[x_1, x_2, \ldots ] / (x_1^2, x_2^2, \ldots)$. Any prime ideal of $A$ must contain $x_1, x_2, \ldots$ since they are nilpotent. Thus the only prime ideal is $(x_1, x_2, \ldots)$. Hence $\spce(\Spec A)$ is automatically noetherian. But $A$ is not noetherian because $(x_1, x_2, \ldots)$ is not finitely generated. 
 
 
+    \begin{Fact}
+        $\Spec A$ is a noetherian topological space if and only if $A$ satisfies ascending chain condition for radical ideals. 
+    \end{Fact}
+\end{proof}
+
+\begin{Exercise}
+    \phantom{h}
+    \begin{enumerate}[label = (\alph*)]
+        \item Let $S$ be a graded ring. Show that $\Proj S = \emptyset$ if and only if every element of $S_+$ is nilpotent. 
+        \item Let $\varphi : S \to T$ be a graded homomorphism of graded rings. Let $U = \{\fp \in \Proj T : \fp \not \supseteq \varphi(S_+)\}$. Show that $U$ is an open subset of $\Proj T$, and show that $\varphi$ determines a natural morphism $f : U \to \Proj S$.
+        \item The morphism $f$ can be an isomorphism even when $\varphi$ is not. For example, suppose that $\varphi_d : S_d \to T_d$ is an isomorphism for all $d \geq d_0$, where $d_0$ is an integer. Then show that $U = \Proj T$ and the morphism $f : \Proj T \to \Proj S$ is an isomorphism. 
+        \item Let $V$ be a projective variety with homogeneous coordinate ring $S$. Show that $t(V) \simeq \Proj S$. 
+    \end{enumerate}
+\end{Exercise}
+
+\begin{proof}
+    \textcolor{red}{Skipped. I don't want to listen to $\Proj$}
+\end{proof}
+
+\begin{Exercise}
+    \phantom{h}
+    \begin{enumerate}[label = (\alph*)]
+        \item Let $V$ be a variety over the algebraically closed field $k$. Show that a point $p \in t(V)$ is a closed point if and only if its residue field is $k$. 
+        \item If $f : X \to Y$ is a morphism of schemes over $k$, and if $p \in X$ is a point with residue field $k$, then $f(p) \in Y$ also has residue field $k$. 
+        \item Now show that if $V, W$ are any two varieties over $k$, then the natural map 
+        \[
+            \Hom_{\Var}(V, W) \to \Hom_{\Sch / k} (t(V), t(W))
+        \]
+        is bijective. 
+    \end{enumerate}
+\end{Exercise}
+\begin{proof}
+    \textcolor{red}{Skipped. I don't quite understand the functor from varieties to schemes just yet in detail}
+\end{proof}
+\begin{Exercise}
+    Let $X$ be a scheme, let $f \in \Gamma(X, \cO_X)$, and define $X_f$ to be the subset of points $x \in X$ such that the stalk $f_x$ of $f$ at $x$ is not contained in the maximal ideal $\fm_x$ of the local ring $\cO_x$. 
+    \begin{enumerate}[label = (\alph*)]
+        \item If $U = \Spec B$ is an open affine subscheme of $X$, and if $\bar{f} \in B = \Gamma(U, \cO_X|_U)$ is the restriction of $f$, show that $U \cap X_f = D(\bar{f})$. Conclude that $X_f$ is an open subset of $X$. 
+        \item Assume that $X$ is quasi-compact. Let $A = \Gamma(X, \cO_X)$, and let $a \in A$ be an element whose restriction to $X_f$ is $0$. Show that for some $n > 0$, $f^n a = 0$. 
+        \item Now assume that $X$ has a finite cover by open affines $U_i$ such that each intersection $U_i \cap U_j$ is quasi-compact. Let $b \in \Gamma(X_f, \cO_{X_f})$. Show that for some $n > 0$, $f^nb$ is the restriction of an element of $A$. 
+
+        \item With the hypothesis of (c), conclude that $\Gamma(X_f, \cO_{X_f}) \simeq A_f$. 
+    \end{enumerate}
+\end{Exercise}
+
+\begin{proof}
+    For Part (a), it suffices to prove that for $f \in B$, then open set $D(f) \subseteq \Spec B$ can be characterized as the subset of primes $\fp \in \Spec B$ with $f \notin \fp B_\fp$. Thus, we want to prove that $f \in \fp$ in $B$ if and only if $f \in \fp B_\fp$ in $B_\fp$. One direction is easy. For the other direction, suppose $f \in \fp B_\fp$ in $B_\fp$. Then $f = x/y$ where $x \in \fp$ and $y \notin \fp$. Then $z(yf - x) = 0$ in $B$ for $z \notin \fp$. This implies that $f \in \fp$ in $B$ which suffices for the proof of (a). 
+
+    For Part (b), it suffices to prove this when $X$ is affine because we can just pick the largest $n$ on a finite cover by affines (which exist since $X$ is quasi-compact). But the restriction of $a \in A$ being zero on $X_f$ implies that $a = 0$ in $A_f$. This exactly translates to $f^n a = 0$ for some $n$. This proves (b). 
+
+    For Part (c), let $U_i = \Spec A_i$ be the finite affine open cover of $X$. Since $X_f \cap U_i = D_{A_i}(f)$, the section $b$ on $X_f \cap U_i$ comes from some $b_i \in \Gamma(U_i, \cO_{U_i})$ and 
+    \[
+        b |_{X_f \cap U_i} = \frac{b_i}{f^N}
+    \]
+    where we can pick $N$ to be large enough to hold for all affine opens in our finite cover. In particular, we have $f^N b |_{X_f \cap U_i} = b_i |_{X_f \cap U_i}$ for all $i$. It remains to glue together the $b_i \in \Gamma(U_i, \cO_{U_i})$. But this follows because on $U_i \cap U_j$, we can pick $M$ large enough so that $f^M(b_i - b_j) = 0$. We can pick $M$ large enough to hold for all finite pairs $i, j$. Thus $f^{M+N} b$ comes from a global section. 
+
+    For Part (d), first consider the restriction map $A \to \Gamma(X_f, \cO_{X_f})$. To induce a map $A_f \to \Gamma(X_f, \cO_{X_f})$ we want to prove that $f|_{X_f}$ is invertible. Let $f_i \in \Gamma(U_i \cap X_f, \cO_{U_i \cap X_f})$ be an element on the affine open which is the inverse of $f|_{U_i \cap X-f}$. That is, we have $f|_{U_i \cap X_f} f_i = 1$ on $U_i \cap X_f$. To prove that we can glue the $f_i$ together, we look at $f_i - f_j$ on $U_i \cap U_j \cap X_f$ and prove that it is zero. But this follows because on stalks $f$ is invertible, which means that the stalk of $f_i - f_j$ is $0$ on all points in $U_i \cap U_j \cap X_f$. This implies that we have a well-defined map 
+    \[
+        A_f \longrightarrow \Gamma \left (X_f, \cO_{X_f} \right )
+    \]
+    From (b), we know that this is injective. This is surjective from (c). This suffices for the proof. 
+\end{proof}
+
+\begin{Exercise}
+    \emph{A Criterion for Affineness}.
+    \begin{enumerate}[label = (\alph*)]
+        \item Let $f : X \to Y$ be a morphism of schemes, and suppose that $Y$ can be covered by open subsets $U_i$, such that for each $i$, the induced map $f^{-1}(U_i) \to U_i$ is an isomorphism. Then $f$ is an isomorphism. 
+        \item A scheme $X$ is affine if and only if there is a finite set of elements 
+        \[
+            f_1, \ldots, f_r \in A = \Gamma(X, \cO_X),
+        \] 
+        such that the open subsets $X_{f_i}$ are affine, and $f_1, \ldots, f_r$ generate the unit ideal in $A$. 
+    \end{enumerate}
+\end{Exercise}
+
+\begin{proof}
+    We solve part (a). Since $f^{-1}(U_i) \to U_i$ is an isomorphism, on the level of topological spaces we have homeomorphisms $f^{-1}(U_i) \to U_i$. This implies that $f : X \to Y$ is a homeomorphism (standard topological fact). It remains to show that the map on sheaves 
+    \[
+        f^{\#} : \cO_Y \to f_* \cO_X
+    \]
+    is an isomorphism. We know that 
+    \[
+        f^{\#}|_{U_i} : \cO_Y|_{U_i} \to f_* \cO_X |_{U_i}
+    \]
+    is an isomorphism for all $U_i$. But this implies that the induced map on stalks are isomorphisms which implies that $f^{\#}$ is an isomorphism. This proves (a). 
+
+    We solve part (b). If $X$ is affine, then we can let $f_1 = 1$ and this trivially generates all of $A$ while generating the unit ideal. Conversely, suppose that we have a finite set of elements $f_1, \ldots, f_r \in \Gamma(X, \cO_X)$ such that $X_{f_i}$ are affine and $1 = (f_1, \ldots, f_r)$. From the previous exercise, we know that $X_{f_i} \simeq \Spec A_{f_i}$. Since $f_i$ generate $A$, we know that the $X_{f_i}$ cover $X$. From exercise $4$, the canonical isomorphism $A \to \Gamma(X, \cO_X)$ gives us a natural scheme morphism $X \to \Spec A$. This maps $X_f$ to $D(f)$ and is an isomorphism (you can see this by reviewing the construction in Exercise 4). This implies that $X$ and $\Spec A$ are isomorphic. 
+\end{proof}
+
+\begin{Exercise}
+    In this exercise, we compare some properties of a ring homomorphism to the induced morphism of the spectra of the rings. 
+    \begin{enumerate}[label = (\alph*)]
+        \item  Let $A$ be a ring, $X = \Spec A$, and $f \in A$. Show that $f$ is nilpotent if and only if $D(f)$ is empty. 
+        \item Let $\varphi : A \to B$ be a homomorphism of rings, and let $f : Y = \Spec B \to X = \Spec A$ be the induced morphism of affine schemes. Show that $\varphi$ is injective if and only if the map of sheaves $f^\# : \cO_X \to f_* \cO_Y$ is injective. Show furthermore in that case $f$ is \emph{dominant}, i.e., $f(Y)$ is dense in $X$. 
+        \item With the same notation, show that if $\varphi$ is surjective, then $f$ is a homeomorphism of $Y$ onto a closed subset of $X$, and $f^{\#} : \cO_X \to f_* \cO_Y$ is surjective. 
+        \item Prove the converse to (c), namely, if $f : Y \to X$ is a homeomorphism onto a closed subset, and $f^{\#} : \cO_X \to f_* \cO_Y$ is surjective, then $\varphi$ is surjective. 
+    \end{enumerate}
+\end{Exercise}
+
+\begin{proof}
+    This problem has four parts. 
+    \begin{enumerate}[label = (\alph*)]
+        \item This part follows from the fact that the intersection of all prime ideals is exactly the nilpotent elements. 
+
+        \item Suppose that $f^{\#} : \cO_X \to f_* \cO_Y$ is injective. Then the induced map on the global sections
+        \[
+            f^{\#} \left( \Spec A \right) : \Gamma(\Spec A, \cO_{\Spec A}) \to \Gamma(\Spec B, \cO_{\Spec B})
+        \]
+        is exactly our original ring homomorphism $\varphi : A \to B$. This implies that $\varphi$ is injective. 
+        
+        Conversely, suppose that $\varphi : A \to B$ is injective. To prove that $f^{\#} : \cO_X \to f_* \cO_Y$ is injective, it is enough to prove that it is injective on distinguished open sets of $\Spec A$. Consider an arbitrary $f \in A$. The induced map on sections of $D(f)$ becomes the localization map
+        \[
+            f^{\#}(D(f)) : A_f \simeq \cO_{\Spec A}(D(f)) \to \cO_{\Spec B}(D(\varphi(f))) \simeq B_{\varphi(f)}
+        \]
+        which is injective. To prove that $f : \Spec B \to \Spec A$ is dominant, let $D(f)$ be an open set not intersection $f(\Spec B)$. But then $\varphi(f)$ is contained in all prime ideal of $B$. This implies that $\varphi (f)$ is nilpotent. Since $\varphi$ is injective, we know that $f$ is nilpotent. So $D(f)$ is empty which suffices for the proof. 
+
+        Alternatively, we can look at the stalk of $f^\# : \cO_{\Spec A} \to f_* \cO_{\Spec B}$. As we pointed out before, the induced map on $D(f)$ is 
+        \[
+            f^{\#}(D(f)) : A_f \simeq \cO_{\Spec A}{(D(f)} \to \cO_{\Spec B}(D(\varphi(f))) \simeq B_{\varphi(f)} \simeq B \otimes_A A_f
+        \]
+        where we view $B$ as an $A$-module via the morphism $\varphi : A \to B$. Since colimits commute with tensor products, the induced map on stalks is 
+        \[
+            f^{\#}_{\fp} : A \otimes_A A_\fp \to B \otimes_A A_\fp. 
+        \] 
+        Since localization of modules is an exact functor, the injectivity or surjectivity of $\varphi$ implies the injectivity or surjectivity of $f^\#$. 
+
+        \item Since $\varphi$ is surjective, from the previous argument we know $f^{\#}$ is surjective. We only need to show that $f : \Spec B \to \Spec A$ is a closed embedding. We can assume that the ring homomorphism is of the form $A \to A/I$ where $I$ is an ideal. Then the map $f: \Spec (A/I) \to \Spec A$ is a homeomorphism on $V(I)$. Moreover, we have $V_{A/I}(\fp) = V_A(f(\fp))$ which proves that they are homeomorphic. 
+        
+        \item This follows from the previous observation about the induced map on stalks. The hypothesis that $f : Y \to X$ is a homeomorphism onto a closed subset is not needed. 
+    \end{enumerate}
+\end{proof}
 
 
+\begin{Exercise}
+    Let $A$ be a ring. Show that the following conditions are equivalent:
+    \begin{enumerate}[label = (\roman*)]
+        \item $\Spec A$ is disconnected; 
+        \item there exist nonzero elements $e_1, e_2 \in A$ such that $e_1e_2 = 0$, $e_1^2 = e_1$, $e_2^2 = e_2$, and $e_1 + e_2 = 1$. (These elements are called orthogonal idempotents). 
+        \item $A$ is isomorphic to a direct product $A_1 \times A_2$ of non-zero rings. 
+    \end{enumerate}
+\end{Exercise}
 
-
-
+\begin{proof}
+    Suppose $\Spec A$ is disconnected. Then we can write $\Spec A = V(I_1) \sqcup V(I_2)$ where $V(I_1)$ and $V(I_2)$ are clopen. Then 
+    \begin{align*}
+        A \simeq \cO_{\Spec A}(\Spec A) & \simeq \cO_{\Spec A} (V(I_1)) \times \cO_{\Spec A}(V(I_2)).
+    \end{align*}
+    This implies (iii). (iii) clearly implies (ii). (ii) clearly implies (iii) with the isomorphism $A \simeq e_1A \times e_2A$. (iii) clearly implies (i). This suffices for the proof. 
+\end{proof}
 
 
 

@@ -2,50 +2,48 @@ This is BibTeX, Version 0.99d (TeX Live 2023)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: amsrn.bst
-I found no \citation commands---while reading file main.aux
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: ref.bib
-You've used 0 entries,
+You've used 1 entry,
             1497 wiz_defined-function locations,
-            402 strings with 2495 characters,
-and the built_in function-call counts, 15 in all, are:
-= -- 0
-> -- 0
+            411 strings with 2641 characters,
+and the built_in function-call counts, 689 in all, are:
+= -- 12
+> -- 59
 < -- 0
-+ -- 0
-- -- 0
-* -- 0
-:= -- 0
++ -- 2
+- -- 56
+* -- 63
+:= -- 128
 add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+call.type$ -- 1
+change.case$ -- 4
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 1
+duplicate$ -- 54
+empty$ -- 30
+format.name$ -- 2
+if$ -- 69
 int.to.chr$ -- 0
 int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 6
-num.names$ -- 0
-pop$ -- 0
+missing$ -- 26
+newline$ -- 16
+num.names$ -- 2
+pop$ -- 52
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 3
 quote$ -- 0
-skip$ -- 1
+skip$ -- 13
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 5
+swap$ -- 38
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 8
 warning$ -- 0
-while$ -- 0
+while$ -- 9
 width$ -- 0
-write$ -- 5
-(There was 1 error message)
+write$ -- 28

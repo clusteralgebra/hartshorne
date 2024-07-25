@@ -2,5 +2,15 @@
 \begin{bibdiv}
 \begin{biblist}
 
+\bib{Harts77}{book}{
+      author={Hartshorne, R.},
+       title={Algebraic geometry},
+      series={Graduate Texts in Mathematics},
+   publisher={Springer},
+        date={1977},
+        ISBN={9780387902449},
+         url={https://books.google.com/books?id=3rtX9t-nnvwC},
+}
+
 \end{biblist}
 \end{bibdiv}
