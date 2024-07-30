@@ -1475,6 +1475,7 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi7.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy7.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr7.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/adobe/palatino/pplr9e.vf
 INPUT ./main.bbl
 INPUT main.bbl
 INPUT ./main.bbl
@@ -1508,6 +1509,7 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/mathabx-type1/matha10.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/mathabx-type1/matha6.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/mathabx-type1/matha8.pfb
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/mathabx-type1/mathb10.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb

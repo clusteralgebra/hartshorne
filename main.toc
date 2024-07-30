@@ -3,3 +3,4 @@
 \contentsline {section}{\numberline {3}Chapter 2: Schemes}{1}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Sheaves}{1}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Schemes}{1}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}First Properties of Schemes}{12}{subsection.3.3}%
