@@ -2,6 +2,15 @@
 \begin{bibdiv}
 \begin{biblist}
 
+\bib{Atiyah1969}{book}{
+      author={Atiyah, M.~F.},
+      author={Macdonald, I.~G.},
+       title={Introduction to commutative algebra},
+   publisher={Addison-Wesley Publishing Co., Reading, Mass.-London-Don Mills, Ont.},
+        date={1969},
+      review={\MR{242802}},
+}
+
 \bib{Harts77}{book}{
       author={Hartshorne, R.},
        title={Algebraic geometry},

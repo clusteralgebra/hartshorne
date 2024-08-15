@@ -557,7 +557,7 @@ This document contains my solutions to the exercises in~\cite{Harts77}.
     \end{Fact}
 \end{proof}
 
-\begin{Exercise}
+\begin{Exercise}\label{exercise:II.2.14}
     \phantom{h}
     \begin{enumerate}[label = (\alph*)]
         \item Let $S$ be a graded ring. Show that $\Proj S = \emptyset$ if and only if every element of $S_+$ is nilpotent. 
@@ -863,7 +863,242 @@ This document contains my solutions to the exercises in~\cite{Harts77}.
 \end{Exercise}
 
 \begin{proof}
-    For part (a), it suffices to work over $f : \Spec B \to \Spec A$ where $B$ is a finite $A$-module. We want to prove that this map has finite fibers. 
+    For part (a), it suffices to work over $f : \Spec B \to \Spec A$ where $B$ is a finite $A$-module. We want to prove that this map has finite fibers. The fiber over $\fp \in \Spec A$ has scheme structure given by 
+    \[
+        \begin{tikzcd}
+            {\text{Spec } \left ( B \otimes_A k(\mathfrak{p}) \right )} && {\text{Spec } k(\mathfrak{p})} \\
+            \\
+            {\text{Spec } B} && {\text{Spec } A}
+            \arrow[from=1-1, to=1-3]
+            \arrow[from=1-1, to=3-1]
+            \arrow[from=1-3, to=3-3]
+            \arrow[from=3-1, to=3-3].
+        \end{tikzcd}
+    \]
+    Since $B$ is a finite $A$-module, $B \otimes_A k(\mathfrak{p})$ is a finite-dimensional algebra over a field. Thus it is an Artinian ring and has finitely many prime ideals. This implies that finite morphisms have finite fibers, i.e., are quasi-finite. 
+
+    For part (b), it is enough to look locally and again we want to prove that $f : \Spec B \to \Spec A$ is closed when $A \to B$ is finite. We want to prove that the image of $\Spec (B/I)$ for any ideal $I$ under $f$ is closed in $\Spec A$. In other words, it is enough to prove that 
+    \[
+        \Spec (B/I) \to \Spec B \to \Spec A
+    \]
+    has closed image. Since $A \to B \to B/I$ is finite we can prove the more general statement that $A \to B$ finite implies that the image of $\Spec B \to \Spec A$ is closed. The induced map $A / I \to B$ where $I$ is the kernel is also finite. We have $\Spec B \to \Spec A$ factors through 
+    \[
+        \Spec B \to \Spec (A/I) \to \Spec A
+    \]
+    where the second morphism is a closed immersion. Thus, it is enough to prove that $\Spec B \to \Spec (A/I)$ has closed image. We can prove the more general statement that $A \subseteq B$ is a finite extension then $\Spec B \to \Spec A$ has closed image. But this follows from Theorem 5.10 in~\cite{Atiyah1969}.
+    
+    For part (c), consider the natural morphism from the affine line with doubled origin to the affine line. 
+\end{proof}
+
+\begin{Exercise}
+    Let $X$ be an integral scheme. Show that the local ring $\cO_\xi$ of the generic point $\xi$ of $X$ is a field. It is called the \textbf{function field} of $X$, and is denoted by $K(X)$. Show also that if $U = \Spec A$ is any open affine subset of $X$, then $K(X)$ is isomorphic to the quotient field of $A$. 
+\end{Exercise}
+
+\begin{proof}
+    Let $U = \Spec A$ is any open affine subset of $X$. Since $X$ is integral, $A$ is an integral domain. Moreover, we have 
+    \[
+        \cO_\xi \simeq \cO_{\Spec A, (0)} = S^{-1}A = K(A). 
+    \]
+    where $S = A \backslash \{0\}$. 
+\end{proof}
+
+\begin{Exercise}
+    A morphism $f : X \to Y$, with $Y$ irreducible, is \textbf{generically finite} if $f^{-1}(\eta)$ is a finite set, where $\eta$ is the generic point of $Y$. A morphism $f : X \to Y$ is \textbf{dominant} if $f(X)$ is dense in $Y$. Now let $f : X \to Y$ be dominant, generically finite morphsim of finite type of integral schemes. Show that there is an open subset $U \subseteq Y$ such that the induced morphism $f^{-1}(U) \to U$ is finite. 
+\end{Exercise}
+
+\begin{proof}
+    Let $\Spec A$ be an open affine subscheme of $Y$. Then we have a morphism $f : f^{-1} (\Spec A) \to \Spec A$. In this setting, $A$ is an integral domain, $f$ is still dominant, $f$ is still generically finite, $f$ is still finite type and, and $f^{-1}(\Spec A)$ is still integral. Let $\Spec B \subset f^{-1}(\Spec A)$ be an affine open subscheme. The morphism $\Spec B \to \Spec A$ factors as 
+    \[
+        \Spec B \to \Spec A/I \to \Spec A
+    \]
+    where $I$ is the kernel of $A \to B$. From dominance, $I$ consists of nilpotents and hence is the $0$ ideal since $A$ is integral. Thus we have $A \hookrightarrow B$ is an extension of rings. This also induces a field extension $\Frac(A) \hookrightarrow \Frac (B)$. From finite type, we have $B = A[x_1, \ldots, x_n]$. From generically finite, we have 
+    \[
+        \Spec (A[x_1, \ldots, x_n] \otimes_A \Frac(A)) = \Spec \Frac(A)[x_1, \ldots, x_n]
+    \]
+    is finite. The field of fractions of $\Frac(A)[x_1, \ldots, x_n]$ is $\Frac(B)$. Since algebraic and finitely generated extensions are finite, it is enough to prove that $\Frac(A) \subseteq \Frac(B)$ is algebraic. Suppose we have a transcendental element $\alpha$ which we can pick to be in $\Frac(A)[x_1, \ldots, x_n]$. Then by taking irreducible polynomials, we get infinitely many prime ideals of $\Frac(A)[x_1, \ldots, x_n]$. This contradicts the generic finiteness condition. Thus we must have $K(Y) \to \Frac(A) \subseteq \Frac(B) = K(X)$ is a finite field extension. 
+
+    For any $x_i \in B = A[x_1, \ldots, x_n]$, it satisfies some minimal polynomial when we consider it over the extension $\Frac(A)[x_1, \ldots, x_n]$. This is algebraic, over $\Frac(A)$. Thus, after clearing denominators we have a polynomial relation of $x_i$ with coefficients in $A$. Let $\ell_i$ be the leading coefficient of this polynomial and let $a = \prod \ell_i$. Then, localization gives us the restricted map
+    \[
+        \Spec B \supset \Spec (B_a) \to \Spec (A_a) \subset \Spec A 
+    \]
+    where the corresponding ring morphism $A_a \to B_a$ is finite. By covering $f^{-1}(\Spec A)$ by finitely many $\Spec B$ (we can do this because $f$ is a morphism of finite type so pre-image of affines are always quasi-compact), we can shrink $A$ so that $f^{-1}(\Spec A)$ is covered by $\Spec B_i$ such that $\Spec B_i \to \Spec A$ come from finite morphisms $A \to B_i$. 
+    
+    Let us review what we have so far. We have found an affine open $\Spec A \subseteq Y$ where the map $f : f^{-1}(\Spec A) \to \Spec A$ has the property that the domain $f^{-1}(\Spec A)$ is covered by finitely many open affine subschemes $\Spec B_i$ where the $\Spec B_i \to \Spec A$ is induced by a finite morphism $A \hookrightarrow B_i$. Moreover, the induced map $K(A) \hookrightarrow K(B_i)$ of quotient fields is algebraic. We use the following fact: 
+    \begin{Fact}
+        Let $A \subseteq B$ be an extension of integral domains. If $K(A) \hookrightarrow K(B)$ is algebraic, then any non-empty prime ideal of $B$ contains a non-trivial element of $A$. 
+    \end{Fact}
+
+    The proof is not difficult. Let $x \in \mathfrak{p}$ be an element of a prime ideal of $B$. There is some polynomial $p \in A[t]$ with $p(x) =0$ and non-zero constant term (since $B$ is an integral domain). The constant term of $p$ is an element of $A$ in $\mathfrak{p}$. 
+
+    Let $U_i = \Spec B_i \subseteq f^{-1}(\Spec A)$. The finite intersection $W = \bigcap U_i$ is a non-empty open subscheme since $X$ is irreducible. This means that there are ideals $\mathfrak{b}_i \subseteq B_i$ such that 
+    \[
+        \Spec B_i \supseteq V(\mathfrak{b}_i) = U_i \backslash W
+    \]
+    by definition of the Zariski topology. From the Fact, there are non-zero $f_i \in \mathfrak{b}_i \cap A$. We have 
+    \[
+        D(f_i) \subseteq W \text{ in } \Spec B_i.
+    \]
+    Consider the open subscheme $\Spec A_{f_1 \ldots f_r} \subseteq \Spec A$. The pre-image is exactly $\bigcap X_{f_i}$ where we view $f_i$ as elements in $\Gamma(X, \cO_X)$ and $X = f^{-1}(\Spec A)$. This is also contained in $W$. So, for all $j$, we have that 
+    \[
+        f^{-1}(\Spec A_{f_1 \ldots f_r}) = \Spec B_j \cap \bigcap X_{f_i} = \Spec \left( B_j \right)_{f_1 \ldots f_r}
+    \]
+    where we view $f_i \in A \subset B_j$. Thus, $f^{-1}(\Spec A_{f_1 \ldots f_r})$ is affine and the induced map is finite. This suffices for the proof. 
+\end{proof}
+
+\begin{Exercise}[Normalization]
+    A scheme is \textbf{normal} if all of its local rings are integrally closed domains. Let $X$ be an integral scheme. For each open affine subset $U = \Spec A$ of $X$, let $\widetilde{A}$ be the integral closure of $A$ in its quotient field, and let $\widetilde{U} = \Spec \widetilde{A}$. Show that one can glue the schemes $\widetilde{U}$ to obtain a normal integral scheme $\widetilde{X}$, called the \textbf{normalization} of $X$. Show also that there is a morphism $\widetilde{X} \to X$, having the following universal property: for every normal integral scheme $Z$, and for every dominant morphism $f : Z \to X$, $f$ factors uniquely through $\widetilde{X}$. If $X$ is of finite type over a field $k$, then the morphism $\widetilde{X} \to X$ is a finite morphism. 
+\end{Exercise}
+
+\begin{proof}
+    I first give the main idea behind the construction. Given an open affine subscheme $\Spec A \subseteq X$ we have a copy of $\Spec \widetilde{A}$. Since $X$ is already a scheme, we already having gluing data for all open affine subschemes of $X$ to form $X$. To upgrade this data to gluing data between the $\Spec \widetilde{A}$, we will simply use the fact that \textbf{localization commutes with algebraic closures}. Specifically, we lay out this idea in the following fact: 
+
+    \begin{Fact}
+        Let $A$ be an integral domain. Let $S \subseteq A$ be a multiplicative subset. Then we have $\widetilde{S^{-1}A} = S^{-1} \widetilde{A}$ where we can view the equality in the quotient field $K$.  
+    \end{Fact}
+
+    We can pick simultaneously distinguished affine opens in $\Spec A \cap \Spec B$ with isomorphisms $\Spec A_f \simeq \Spec B_g$. By taking integral closures, this gives an isomorphism $\Spec \widetilde{A}_f \simeq \Spec \widetilde{B}_g$. This provides the gluing data to get $\widetilde{X}$. 
+
+    The morphism $\widetilde{X} \to X$ in the affine case just comes from the natural inclusion $A \subseteq \widetilde{A}$. We can define it in this way for each affine open subscheme. The compatibility of these maps again follows from the fact that localization commutes with algebraic closures. 
+
+    For the universal property, you can verify it on affine schemes. It just boils down to injectivity! The domininant map between affine schemes is algebraically equivalent to injectivitity. Since $A \hookrightarrow \widetilde{A}$ is injective this gives the right notion. 
+
+    We want to show that last result: if $X$ is of finite type over a field $k$, then the morphism $\widetilde{X} \to X$ is a finite morphism. We can cover $X$ with affine opens which are finitely generated $k$-algebras. Take one of these, $\Spec A$. The pre-image is $\Spec \widetilde{A}$. We want to prove that $A \subset \widetilde{A}$ is a finite extension. But this follows from a well-known theorem by Noether: 
+    \begin{Fact}
+        Let $A$ be a finitely generated $k$-algebra and let $\widetilde{A}$ be the integral closure. Then $\widetilde{A}$ is a finite $A$-module. 
+    \end{Fact} 
+\end{proof}
+
+\begin{Exercise}[The Topological Space of a Product]
+    Recall that in the category of varieties, the Zariski topology on the product of two varieties is not equal to the product topology. Now we see that in the category of schemes, the underlying point set of a product of schemes is not even the product set!
+    \begin{enumerate}[label = (\alph*)]
+        \item Let $k$ be a field, and let $\mathbf{A}_k^1 = \Spec k[x]$ be the affine line over $k$. Show that $\mathbf{A}_k^1 \times_{\Spec k} \mathbf{A}_k^1 \simeq \mathbf{A}_k^2$, and show that the underlying point set of the product is not the product of the underlying point sets of the factors (even if $k$ is algebraically closed). 
+        \item Let $k$ be a field, let $s$ and $t$ be indeterminates over $k$. Then $\Spec k(s)$, $\Spec k(t)$, and $\Spec k$ are all one-point spaces. Describe the product scheme $\Spec k(s) \times_{\Spec k} \Spec k(t)$.
+    \end{enumerate}
+\end{Exercise}
+
+\begin{proof}
+    For part (a), the fibered product over $\Spec k$ is equal to 
+    \[
+        \mathbf{A}_k^1 \times_{\Spec k} \mathbf{A}_k^1 = \Spec (k[x] \otimes_k k[y] ) = \mathbf{A}_k^2. 
+    \]
+    The points of the product of the sets $\mathbf{A}_k^1 \times \mathbf{A}_k^1$ correspond to $(k \cup \{*\})^2$ where $*$ corresponds to the generic point. For $\mathbf{A}_k^2$, the points are irreducible polynomials. There are a lot more points in this set. 
+
+    For part (b), it is $\Spec k(s, t)$ which is also a single point. 
+\end{proof}
+
+\begin{Exercise}[Fibers of a morphism]
+    \phantom{h}
+    \begin{enumerate}[label = (\alph*)]
+        \item If $f : X \to Y$ is a morphism, and $y \in Y$ a point, show that $\spa(X_y)$ is homeomorphic to $f^{-1}(y)$ with the induced topology. 
+        \item Let $X = \Spec k[s,t] / (s - t^2)$, let $Y = \Spec k[s]$, and let $f : X \to Y$ be the morphism defined by sending $s \to s$. If $y \in Y$ is the point $a \in k$ with $a \neq 0$, show that the fibre $X_y$ consists of two points, with residue field $k$. If $y \in Y$ corresponds to $0 \in k$, show that the fibre $X_y$ is a nonreduced one-point scheme. If $\eta$ is the generic point of $Y$, show that $X_\eta$ is a one-point scheme, whose residue field is an extension of degree two of the residue field of $\eta$. (Assume $k$ is algebraically clsoed). 
+    \end{enumerate}
+\end{Exercise}
+
+\begin{proof}
+    For part (a), we first prove it in the case where $X$ and $Y$ are affine schemes. Suppose that $f : \Spec B \to \Spec A$ can be represented as the ring map $\varphi : A \to B$. For $\fp \in \Spec A$, we want to compute the fibered product along the map $\Spec k(\fp) \to \Spec A$. We will do it in parts according to the composition of maps 
+    \[
+        A \to A_\fp \to k(\fp). 
+    \]
+    Consider the commutative diagram 
+    \[
+        \begin{tikzcd}
+            {\text{Spec } B_\mathfrak{p} / \mathfrak{p}B_\mathfrak{p}} & {\text{Spec } B_\mathfrak{p}} \\
+            {\text{Spec } (B_{\mathfrak{p}} \otimes_{A_\mathfrak{p}} A_\mathfrak{p} / \mathfrak{p} A_\mathfrak{p})} & {\text{Spec } (B \otimes_A A_\mathfrak{p})} & {\text{Spec } B} \\
+            {\text{Spec } (A_\mathfrak{p} / \mathfrak{p} A_\mathfrak{p})} & {\text{Spec } A_\mathfrak{p}} & {\text{Spec } A}
+            \arrow[Rightarrow, no head, from=1-1, to=2-1]
+            \arrow[from=2-1, to=2-2]
+            \arrow[from=2-1, to=3-1]
+            \arrow[Rightarrow, no head, from=2-2, to=1-2]
+            \arrow[from=2-2, to=2-3]
+            \arrow[from=2-2, to=3-2]
+            \arrow[from=2-3, to=3-3]
+            \arrow[from=3-1, to=3-2]
+            \arrow[from=3-2, to=3-3]
+        \end{tikzcd}
+    \]
+    For the first Cartesian square, we are taking the fibered product of $\Spec B \to \Spec A$ along the morphism $\Spec A_\mathfrak{p} \to \Spec A$. The result is the spectrum 
+    \[
+        \Spec (B \otimes_A A_\mathfrak{p}) = \Spec B_\fp. 
+    \]
+    The prime ideals of $B_\fp$ are exactly the prime ideals in $\Spec B$ which do not contain $\varphi(A \backslash \fp)$. The morphism $\Spec B_\fp \to \Spec A_\fp$ is the same map $\Spec B \to \Spec A$ after a change of domain and codomain. 
+    
+    In the second Cartesian square, we are taking the fibered product with the closed immersion 
+    \[
+        \Spec (k(\fp)) = \Spec (A_\fp / \fp A_\fp) \to \Spec A_\fp.
+    \]
+    The fibered product ends up being 
+    \[
+        \Spec (B_\fp \otimes_{A_\fp} A_\fp / \fp A_\fp) = \Spec B_\fp / \fp B_\fp. 
+    \]
+    This is the prime ideals of $B$ containing $\varphi(A \backslash \fp)$ and not containing $\varphi(\fp)$. This exactly corresponds to the prime ideals of $\fq \in \Spec B$ for which $\varphi^{-1}(\fq) = \fp$. It is also clear that top horiziontal maps are inclusions and thus order-preserving. This proves that $\spa (X_y)$ is homeomorphic to $f^{-1}(y)$. 
+\end{proof}
+
+\begin{Exercise}[Closed Subschemes]
+    \phantom{h}
+    \begin{enumerate}[label = (\alph*)]
+        \item Closed immersions are stable under base extension: if $f : Y \to X$ is a closed immersion, and if $X' \to X$ is any morphism, then $f' : Y \times_X X' \to X'$ is also a closed immersion. 
+        
+        \item If $Y$ is a closed subscheme of an affine scheme $X = \Spec A$, then $Y$ is also affine, and in fact, $Y$ is the closed subscheme determined by a suitable ideal $\fa \subseteq A$ as the image of the closed immersion $\Spec A/\fa \to \Spec A$. 
+        \item Let $Y$ be a closed subset of a scheme $X$, and give $Y$ the reduced induced subscheme structure. If $Y'$ is any other closed subscheme of $X$ with the same underlying topological space, show that the closed immersion $Y \to X$ factors through $Y'$. We express this property by saying that the reduced induced structure is the smallest subscheme structure on a closed subset. 
+        \item Let $f : Z \to X$ be a morphism. Then there is a unique closed subscheme $Y$ of $X$ with the following property: the morphism $f$ factors through $Y$, and if $Y'$ is any other closed subscheme of $X$ through which $f$ factors, then $Y \to X$ factors through $Y'$ also. We call $Y$ the \textbf{scheme-theoretic image} of $f$. If $Z$ is a reduced scheme, then $Y$ is just the reduced induced structure on the closure of the image $f(Z)$. 
+    \end{enumerate}
+\end{Exercise}
+
+\begin{proof}
+    For part (1), it suffices to prove this for affine schemes. This follows from the well-known fact that $M \otimes_A A/I \simeq M / IM$. 
+
+    For part (2), we will first prove that if $\Spec B \to \Spec A$ is a closed subscheme, then the corresponding ring homomorphism $A \to B$ is surjective. In otherworse, affine closed subschemes of affine schemes are of the form $\Spec (A/I) \to \Spec A$ induced by the quotient ring homomorphism $A \to A/I$. From $\Spec B \to \Spec A$ being a closed immersion, the map on sheaves is surjective. This implies that there is some open cover, which we can pick to be distinguished $D(f_i)$ of $\Spec A$, such that the maps
+    \[
+        A_{f_i} \to \cO_{\Spec A} (D(f_i)) \to \cO_{\Spec B}(D(\varphi(f_i))) = B_{\varphi(f_i)}
+    \]
+    are surjective where $\varphi : A \to B$ is the corresponding ring homomorphism. Since the $D(f_i)$ cover $\Spec A$, we also know that $(f_1, \ldots, f_r) = 1$ (we can pick a finite number of them). So we want to prove the following algebraic fact: let $(f_1, \ldots, f_r) = 1$ and $\varphi : A \to B$ be a ring map such that $A_{f_i} \to B_{\varphi(f_i)}$ are surjective. Then $A \to B$ is surjective. For $b \in B$, there is a large enough $N$ and $a_i \in A$ so that 
+    \[
+        \frac{\varphi(a_i)}{\varphi(f_i)^N} = b \text{ in } B_{\varphi(f_i)}. 
+    \]
+    For large enough $M$, we have that 
+    \[
+        \varphi(f_i)^M \left (\varphi(a_i) - b \varphi(f_i)^N \right ) = 0 \text{ in } B \text{ for all $i$}.
+    \]
+    By absorbing the $f_i^M$ into $a_i$, we have $b \varphi(f_i^{M+N}) = \varphi(a_i)$ in $B$ for all $i$. There is some $c_i \in A$ such that $\sum c_i f_i^{M+N} = 1$. Thus, we have 
+    \[
+        \varphi \left( \sum c_i a_i \right) = b
+    \]
+    which implies surjectivity. Thus, any affine closed subscheme of $\Spec A$ is of the form $\Spec A/I \to \Spec A$. 
+
+    Now let $Y \to \Spec A$ be any closed subscheme. Let $\Spec B_i \subseteq Y$ be an affine open cover of $Y$. We have open sets $U_i \subseteq X$ such that 
+    \[
+        \Spec B_i = Y \cap U_i. 
+    \]
+    We can refine $U_i$ with $D_{\Spec A}(g_{ij}) \subseteq U_i$. Our map $f : Y \to \Spec A$ we can restrict to 
+    \[
+        f : \Spec B_i \to \Spec A.
+    \]
+    The pre-image of $D(g_{ij})$ is affine too since it consists of all prime ideals of $B$ avoiding $\varphi(g_{ij})$. Since the pre-image of $U_i$ under $Y \to X$ is $\Spec B_i$, the pre-image of $D(g_{ij})$ under the original map is exactly this affine open. Thus, we have some open cover of $X$ by distinguished affine opens whose pre-images (intersection with $Y$) are also affine. Moreover we can pick finitely many of them from quasi-compactness. Relabel them as $D(f_1), \ldots, D(f_r)$ and we have $(f_1, \ldots, f_r) = 1$ in $A$. It is not hard to see that the pre-image of $D(f_i)$ is exactly $Y_{f_i}$ and is affine where we consider the image of $f_i$ to global sections of $Y$. Since $f_1, \ldots, f_r$ generate unit ideal, the image of these generators must also generate the unit ideal of the global sections of $Y$. From Exercise III.2.17, this implies that $Y$ is affine. We have already taken care of this case in the beginning. 
+
+    For part (3), we get the idea on affine opens. It is not hard to see that they glue in a compatible way. In the affine case, algebraically we want to show that if $I$ is radical, $J$ is an ideal so that $\sqrt{J} = I$, then $A \to A/I$ factors uniquely through $A/J$. But this is trivial because $J \subseteq I$.
+    
+    \textcolor{red}{I'll skip part (4) and maybe do it at a later date}
+\end{proof}
+
+\begin{Exercise}[Closed Subschemes of $\Proj S$]
+    \phantom{h}
+    \begin{enumerate}[label = (\alph*)]
+        \item Let $\varphi : S \to T$ be a surjective homomorphism of graded rings, preserving degrees. Show that the open set $U$ of (Exercise~\ref{exercise:II.2.14}) is equal to $\Proj T$, and the morphism $f : \Proj T \to \Proj S$ is a closed immersion. 
+        \item If $I \subseteq S$ is a homogeneous ideal, take $T = S/I$ and let $Y$ be the closed subscheme of $X = \Proj S$ defined as the image of the closed immersion $\Proj S/I \to X$. Show that different homogeneous ideals can give rise to the same closed subscheme. For example, let $d_0$ be an integer, and let $I' = \bigoplus_{d \geq d_0} I_d$. Show that $I$ and $I'$ determine the same closed subscheme. 
+    \end{enumerate}
+\end{Exercise}
+
+\begin{proof}
+    Let $\varphi : S \to T$ be a surjective graded homomorphism of graded rings. Then $\varphi(S_+) = T_+$. Thus, we have 
+    \[
+        U = \{ \fp \in \Proj T : \fp \not\supseteq \varphi(S_+)\} = \{ \fp \in \Proj T : \fp \not\supseteq T_+ \} = \Proj T. 
+    \]
+    To prove that $f : \Proj T \to \Proj S$ is a closed immersion, it suffices to find an open cover $U_i$ of $\Proj T$ with open sets $V_i$ of $\Proj S$ such that $f(U_i) \subseteq V_i$ and $f : U_i \to V_i$ is a closed immersion. We can pick $D_{\Proj T}(f)$ for all homogeneous $f \in T$. Let $t \in T$ be arbitrary, from surjectivity we have $s \in S$ such that $\varphi(s) = t$. The induced map 
+    \[
+        f : \Spec (T_{(t)}) \simeq D_{\Proj T}(t) \to D_{\Proj S}(s) \simeq \Spec (S_{(s)})
+    \]
+    where the map is the localization and taking degree $0$ part. This is surjective which means we have a closed immersion! This completes the first part. 
+    
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    
